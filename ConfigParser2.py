@@ -590,7 +590,9 @@ class RawConfigParser:
             if _sect != _cursectname:
                 outstr += "\n%s\n%s\n" % (_sect, "-"* len(_sect))
                 _cursectname = _sect
-            outstr += ":%s: %s" % (_opt, "".join(self.comment_store[item]))
+            txt = "  ".join(self.comment_store[item])
+            txt = txt.replace("#", "").replace(";","")
+            outstr += ":%s: %s" % (_opt, txt)
         return outstr
 
 

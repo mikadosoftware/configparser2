@@ -24,6 +24,11 @@ Quick usage
     :global: ## Section dealing with my addictions
     :latte: ## my default cuppa
 
+
+    Simple helper script:
+  
+    python docFromIni.py <my/ini/file> > docs/ini.rst
+
     
    
 
