@@ -56,3 +56,29 @@ I am also looking at fixes for doctest (xxx)
 And the installation and distribute nightmare is also a problem - I have no real 
 insight here but it does need fixing.
 
+
+Step 1
+======
+
+Get set up with latest code and compilation.
+And don't break your system...
+
+ConfigParser is unlikely to be under heavy development so tracking the HEAD 
+will be simplest.
+
+
+http://docs.python.org/devguide/setup.html
+
+
+Future of python
+----------------
+
+http://lucumr.pocoo.org/2011/12/7/thoughts-on-python3/
+
+All this gets me thinking about the future of Python - its not big on 
+mobile, its not the default onWindows, its has a place in Unix world but that
+big place is web development - and its under threat from javascript
+
+"now is not the time" is a horrible phrase - and almost always wrong.
+Do something is better than do nothing.  
+
