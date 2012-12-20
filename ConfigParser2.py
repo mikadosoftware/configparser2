@@ -487,9 +487,18 @@ class RawConfigParser:
             # comment or blank line?
             if line.strip() == '' :
                 continue
-            ### we store a dict of cursect,optname with any comments *following*
-            if line[0] in '#;':
-                comment_store.setdefault(cursect['__name__'] +
+            ### store comments for doc purposes
+            ### Deal with cases of sections and options being there or not
+            if line[0] in '#;' and cursect is not None:
+                if optname is None:
+                    comment_store.setdefault(cursect['__name__'] +
+                                             "::" + "global",[]).append(line)
+                else:
+                    comment_store.setdefault(cursect['__name__'] +
+                                             "::" + optname,[]).append(line)
+                continue
+            elif line[0] in '#;' and cursect is None:
+                comment_store.setdefault("global" +
                                          "::" + optname,[]).append(line)
                 continue
 
@@ -563,6 +572,27 @@ class RawConfigParser:
                 if isinstance(val, list):
                     options[name] = '\n'.join(val)
         self.comment_store = comment_store
+
+    def ini_as_rst(self):
+        """trivial helper function to putput comment_stroe as rest
+
+           .. todo:: write actual doctests with string input
+           >> p = ConfigParser2.SafeConfigParser()
+           >> p.read(f)
+           ['/usr/home/pbrian/src/public/configparser2/example.ini']
+           >> open("/tmp/foo.rst", "w").write(p.ini_as_rst())
+
+        """
+        outstr = ".. rst version of ini file\n\n"
+        _cursectname = None
+        for item in sorted(self.comment_store.keys()):
+            _sect, _opt = item.split("::")
+            if _sect != _cursectname:
+                outstr += "\n%s\n%s\n" % (_sect, "-"* len(_sect))
+                _cursectname = _sect
+            outstr += ":%s: %s" % (_opt, "".join(self.comment_store[item]))
+        return outstr
+
 
 
 import UserDict as _UserDict
