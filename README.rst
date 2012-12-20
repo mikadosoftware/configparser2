@@ -36,6 +36,16 @@ ini file document that is really easy to keep up.::
       When in Rome, drink as the Romans drink
 
 
+Should look like this
 
 
+coffee
+------
+* Section dealing with my addictions
+
+* latte
+  my default cuppa
+
+* espresso
+  When in Rome, drink as the Romans drink
 
