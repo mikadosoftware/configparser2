@@ -1,3 +1,6 @@
+:docurl: http://configparser2.mikadosoftware.com
+:desc: trivially getting literate docs into config.ini files
+
 Trivial fix for ConfigParser
 ============================
 
